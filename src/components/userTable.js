@@ -349,7 +349,7 @@ export default ({
             onSelect,
             onSelectAll,
             getCheckboxProps: (record) => ({
-                disabled: defaultUserSelected?.some?.((selected) => selected?.userId === record?.userId) || false,
+              //  disabled: defaultUserSelected?.some?.((selected) => selected?.userId === record?.userId) || false,
             }),
           }}
           rowKey={(record) => record.userId}

@@ -36,16 +36,22 @@ const Contacts = (props) => {
 
   useEffect(()=>{
     if(selectAll && allUserList?.length > 0){
-      const selectedRows = allUserList?.filter(item => defaultUserSelected.every((select) => select.userId !== item.userId));
-      setSelectUser(selectedRows);
-      updateSelectUsers(selectedRows);
+      setSelectUser(allUserList);
+      updateSelectUsers(allUserList);
     }
   }, [allUserList])
 
   useEffect(()=>{
-    window.console.log(selectUser, 'selectUser')
     updateSelectUsers(selectUser);
   }, [selectUser])
+
+  useEffect(()=>{
+    const selectedRows = defaultUserSelected?.map(item => {
+      return {userId: item.userId}
+    });
+    window.console.log(selectedRows, 'defaultUserSelected')
+    setSelectUser(selectedRows);
+  }, [defaultUserSelected])
 
   /**
    *  点击查询回调，会把查询信息回传，外部调用查询用
@@ -74,6 +80,10 @@ const Contacts = (props) => {
     }
     let length = 0;
     length = selectUser?.length || 0;
+
+    if(length === 0){
+      setSelectAll(false);
+    }
 
     return (
       <div>
