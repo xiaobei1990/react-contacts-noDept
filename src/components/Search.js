@@ -35,7 +35,7 @@ export default (props) => {
             current: 1,
             size: 10,
         };
-      handleSearch(payloadData);
+        handleSearch(payloadData);
     };
 
     const reset = () => {
@@ -48,96 +48,94 @@ export default (props) => {
             deptId: undefined,
             roleId: undefined,
         };
-      handleSearch(resetData);
+        handleSearch(resetData);
     };
 
     return <Form style={{marginBottom: '-12px'}} form={form}>
-      <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-        <Col flex={1}>
-          <Row>
-            <Col xs={12} sm={12} md={12} lg={12} xl={12} style={{padding: '0 12px'}}>
-              <Form.Item
-                label={deptTitle}
-                name="deptId"
-              >
-                <TreeSelect
-                  style={{width: '100%'}}
-                  placeholder={deptPlaceholder}
-                  notFoundContent={notFoundContent}
-                  dropdownMatchSelectWidth={false}
-                  treeCheckable={true}
-                  treeCheckStrictly={true}
-                  showCheckedStrategy="SHOW_ALL"
-                  onChange={(value) => {
-                    setDeptIds(value?.map( dept => dept.value));
-                  }}
-                  treeDefaultExpandedKeys={allDeptTree?.length>0 && allDeptTree.map( v=> v.id ) || []}
-                  filterTreeNode={(inputValue, treeNode) => {
-                    return (
-                      treeNode?.props?.[
-                      typeof treeNode?.props?.title === 'string' && 'title'
-                        ]
-                        ?.toLowerCase()
-                        .indexOf(inputValue.toLowerCase()) >= 0
-                    );
-                  }}
+        <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
+            <Col md={8} sm={24} style={{padding: '0 12px'}}>
+                <Form.Item
+                    label={deptTitle}
+                    name="deptId"
                 >
-                  {onTreeSelectData(allDeptTree)}
-                </TreeSelect>
-              </Form.Item>
+                    <TreeSelect
+                        style={{width: '100%'}}
+                        placeholder={deptPlaceholder}
+                        notFoundContent={notFoundContent}
+                        dropdownMatchSelectWidth={false}
+                        treeCheckable={true}
+                        treeCheckStrictly={true}
+                        maxTagCount={1}
+                        showCheckedStrategy="SHOW_ALL"
+                        onChange={(value) => {
+                            setDeptIds(value?.map( dept => dept.value));
+                        }}
+                        treeDefaultExpandedKeys={allDeptTree?.length>0 && allDeptTree.map( v=> v.id ) || []}
+                        filterTreeNode={(inputValue, treeNode) => {
+                            return (
+                                treeNode?.props?.[
+                                typeof treeNode?.props?.title === 'string' && 'title'
+                                    ]
+                                    ?.toLowerCase()
+                                    .indexOf(inputValue.toLowerCase()) >= 0
+                            );
+                        }}
+                    >
+                        {onTreeSelectData(allDeptTree)}
+                    </TreeSelect>
+                </Form.Item>
             </Col>
-            <Col xs={12} sm={12} md={12} lg={12} xl={12} style={{padding: '0 12px'}}>
-              <Form.Item
-                label={roleTitle}
-                name="roleId"
-              >
-                <Select
-                  showSearch
-                  optionFilterProp="children"
-                  placeholder={rolePlaceholder}
-                  style={{ width: '100%' }}
-                  mode="multiple"
-                  getPopupContainer={(triggerNode) => triggerNode.parentNode}
-                  onChange={(value) => {
-                    setRoleIds(value);
-                  }}
+            <Col md={8} sm={24}  style={{padding: '0 12px'}}>
+                <Form.Item
+                    label={roleTitle}
+                    name="roleId"
                 >
-                  {roles &&
-                    roles.map((v) => {
-                      let showRole = v.roleName;
-                      if (locale === 'zh-TW' || locale === 'zh-HK') {
-                        showRole = v.roleNameTw || v.roleName;
-                      } else if (locale === 'en-US') {
-                        showRole = v.roleNameEn || v.roleName;
-                      } else if (locale === 'zh-CN') {
-                        showRole = v.roleName;
-                      }
-                      return (
-                        <Select.Option key={v.roleId} value={v.roleId} lable={showRole}>
-                          {showRole}
-                        </Select.Option>
-                      );
-                    })}
-                </Select>
-              </Form.Item>
+                    <Select
+                        showSearch
+                        optionFilterProp="children"
+                        placeholder={rolePlaceholder}
+                        style={{ width: '100%' }}
+                        mode="multiple"
+                        maxTagCount={1}
+                        getPopupContainer={(triggerNode) => triggerNode.parentNode}
+                        onChange={(value) => {
+                            setRoleIds(value);
+                        }}
+                    >
+                        {roles &&
+                            roles.map((v) => {
+                                let showRole = v.roleName;
+                                if (locale === 'zh-TW' || locale === 'zh-HK') {
+                                    showRole = v.roleNameTw || v.roleName;
+                                } else if (locale === 'en-US') {
+                                    showRole = v.roleNameEn || v.roleName;
+                                } else if (locale === 'zh-CN') {
+                                    showRole = v.roleName;
+                                }
+                                return (
+                                    <Select.Option key={v.roleId} value={v.roleId} lable={showRole}>
+                                        {showRole}
+                                    </Select.Option>
+                                );
+                            })}
+                    </Select>
+                </Form.Item>
             </Col>
-          </Row>
-        </Col>
-        <Col>
-          <Space>
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={okHandle}
-              loading={loading}
-            >
-              {searchTitle}
-            </Button>
-            <Button onClick={reset}>
-              {resetTitle}
-            </Button>
-          </Space>
-        </Col>
-      </Row>
+            <Col md={8} sm={24}>
+                <Space style={{float: 'right'}}>
+                    <Button
+                        type="primary"
+                        htmlType="submit"
+                        onClick={okHandle}
+                        loading={loading}
+                    >
+                        {searchTitle}
+                    </Button>
+                    <Button onClick={reset}>
+                        {resetTitle}
+                    </Button>
+                </Space>
+            </Col>
+        </Row>
     </Form>
 }
