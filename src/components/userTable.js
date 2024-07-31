@@ -45,7 +45,7 @@ export default ({
                   users, searchResult,  defaultUserSelected,
                   handleSearch, debug = false, selectUser, setSelectUser,
                   locale, zhIntl, onSearch, multiple,
-                  searchData, searchTitle, resetTitle
+                  searchData, searchTitle, resetTitle, fromByLogin
                 }) => {
 
   const [tableSearchData, setSearchData] = useState({
@@ -339,6 +339,8 @@ export default ({
     }
   });
 
+  window.console.log(fromByLogin, 'fromByLogin')
+
   return (
       <Table
           className={styles.tableClass}
@@ -361,7 +363,7 @@ export default ({
             return classname;
           }}
           dataSource={userData?.records || []}
-          columns={columns}
+          columns={fromByLogin === 'cloud' ? columns?.filter(item => item.key !== 'username') :columns}
           onChange={handleStandardTableChange}
           pagination={{
             current: userData?.current || 1,

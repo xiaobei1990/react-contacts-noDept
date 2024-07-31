@@ -22,7 +22,7 @@ const Contacts = (props) => {
     selectAllText, locale, deptTitle,
     roleTitle, multiple,
     deptTree, searchData, roleList, deptPlaceholder, notFoundContent, rolePlaceholder, searchTitle, resetTitle,zhIntl,
-    allUserList, handleAllUser
+    allUserList, handleAllUser, fromByLogin
   } = props;
 
 
@@ -141,6 +141,7 @@ const Contacts = (props) => {
               multiple={multiple}
               searchData={searchDataCur}
               defaultUserSelected={defaultUserSelected}
+              fromByLogin={fromByLogin}
           />
         </div>
       </Spin>
@@ -178,6 +179,7 @@ Contacts.propTypes = {
   multiple: PropTypes.bool, // 是否多选
   allUserList: PropTypes.array, // 全选的数据
   handleAllUser: PropTypes.func.isRequired, //全选事件
+  fromByLogin: PropTypes.string, //登录来源，cloud为云服务
 };
 
 Contacts.defaultProps = {
@@ -208,6 +210,7 @@ Contacts.defaultProps = {
   multiple: true,
   zhIntl: (res) => {return res},
   allUserList: [], // 全选的数据
+  fromByLogin: sessionStorage.getItem('from'),
 };
 
 export default Contacts;
