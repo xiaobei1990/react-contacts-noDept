@@ -101,13 +101,13 @@ const Contacts = (props) => {
               roles={roleList}
               loading={loading}
               handleSearch={handleSearch}
-              deptPlaceholder={deptPlaceholder}
-              notFoundContent={notFoundContent}
-              rolePlaceholder={rolePlaceholder}
-              searchTitle={searchTitle}
-              resetTitle={resetTitle}
-              deptTitle={deptTitle}
-              roleTitle={roleTitle}
+              deptPlaceholder={zhIntl(deptPlaceholder)}
+              notFoundContent={zhIntl(notFoundContent)}
+              rolePlaceholder={zhIntl(rolePlaceholder)}
+              searchTitle={zhIntl(searchTitle)}
+              resetTitle={zhIntl(resetTitle)}
+              deptTitle={zhIntl(deptTitle)}
+              roleTitle={zhIntl(roleTitle)}
               />
           {multiple && <div className={styles.selectAll}>
             <Typography.Link
@@ -121,7 +121,7 @@ const Contacts = (props) => {
                 }
                 setSelectAll(!selectAll);
               }}
-            >{!selectAll ? selectAllText : '取消'}</Typography.Link>
+            >{!selectAll ? selectAllText : zhIntl('取消')}</Typography.Link>
             {makeShowMsg}
           </div>}
           <UserTable

@@ -234,10 +234,10 @@ export default ({
         ...getColumnSearchProps('realName', zhIntl('请输入姓名')),
       },
       {
-        title: zhIntl('手机号'),
-        dataIndex: 'phone',
-        key: 'phone',
-        ...getColumnSearchProps('phone', zhIntl('请输入手机号')),
+        title: zhIntl('邮箱'),
+        dataIndex: 'mail',
+        key: 'mail',
+        ...getColumnSearchProps('phone', zhIntl('请输入完整邮箱')),
       },
       {
         title: zhIntl('账号'),
