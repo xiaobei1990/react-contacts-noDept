@@ -142,6 +142,7 @@ const Contacts = (props) => {
               searchData={searchDataCur}
               defaultUserSelected={defaultUserSelected}
               fromByLogin={fromByLogin}
+              locale={locale}
           />
         </div>
       </Spin>
