@@ -108,7 +108,8 @@ const Contacts = (props) => {
               resetTitle={zhIntl(resetTitle)}
               deptTitle={zhIntl(deptTitle)}
               roleTitle={zhIntl(roleTitle)}
-              />
+              locale={locale}
+          />
           {multiple && <div className={styles.selectAll}>
             <Typography.Link
               type="link"
