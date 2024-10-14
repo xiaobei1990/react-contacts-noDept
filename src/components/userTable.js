@@ -237,7 +237,7 @@ export default ({
         title: zhIntl('邮箱'),
         dataIndex: 'mail',
         key: 'mail',
-        ...getColumnSearchProps('phone', zhIntl('请输入完整邮箱')),
+        ...getColumnSearchProps('mail', zhIntl('请输入完整邮箱')),
       },
       {
         title: zhIntl('账号'),
