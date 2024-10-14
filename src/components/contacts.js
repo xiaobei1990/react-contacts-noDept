@@ -128,8 +128,8 @@ const Contacts = (props) => {
               loading={loading}
               handleSearch={handleSearch}
               notFoundContent={notFoundContent}
-              searchTitle={searchTitle}
-              resetTitle={resetTitle}
+              searchTitle={zhIntl(searchTitle)}
+              resetTitle={zhIntl(resetTitle)}
               zhIntl={zhIntl}
               selectUser={selectUser}
               setSelectUser={setSelectUser}
